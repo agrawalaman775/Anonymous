@@ -13,6 +13,10 @@ const passportLocalMongoose=require("passport-local-mongoose");
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var findOrCreate = require('mongoose-findorcreate');
 const PORT=process.env.PORT || 3000
+const connectionParams={
+  useNewUrlParser: true,
+   useUnifiedTopology: true,
+};
 
 const app=express();
 
@@ -32,8 +36,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// mongoose.set("strictQuery", false);
+// mongoose.connect("mongodb+srv://agrawalaman977:Qwerty@123@userdb.u48xotz.mongodb.net/UserDB?retryWrites=true&w=majority", ()=> {
+//     console.log("connected");
+// });
+
+
+
+
 mongoose.set("strictQuery", false);
-mongoose.connect("mongodb://127.0.0.1:27017/userDB", ()=> {
+mongoose.connect(process.env.MONGODB, connectionParams).then( ()=> {
     console.log("connected");
 });
 
