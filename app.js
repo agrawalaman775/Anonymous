@@ -36,10 +36,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// mongoose.set("strictQuery", false);
-// mongoose.connect("mongodb+srv://agrawalaman977:Qwerty@123@userdb.u48xotz.mongodb.net/UserDB?retryWrites=true&w=majority", ()=> {
-//     console.log("connected");
-// });
+
 
 
 
